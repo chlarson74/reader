@@ -3,54 +3,78 @@
 //import inquirer from "inquirer";
 const inquirer = require("inquirer")
 const fs = require("fs")
-
+const generateMarkdown = require("./utils/generateMarkdown")
 // TODO: Create an array of questions for user input
 
 const questions = [
-        
-    {type: 'input',
-     name: 'title',
-     message: 'some message prompt'
-    },
-    {type: 'input',
-    name: 'description',
-    message: 'some message prompt'
-    },
-    {type: 'input',
-    name: 'installation',
-    message: 'some message prompt'
-    },
-    {type: 'input',
-    name: 'usage',
-    message: 'some message prompt'
-    },
-    {type: 'input',
-    name: 'license',
-    message: 'some message prompt'
-    },
-    {type: 'input',
-    name: 'contributing',
-    message: 'some message prompt'
-    },
-    {type: 'input',
-    name: 'tests',
-    message: 'some message prompt'
-    },
     {type: 'input',
     name: 'userName',
-    message: 'some message prompt'
+    message: 'What is your GitHub User Name?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
     },
     {type: 'input',
     name: 'email',
-    message: 'some message prompt'
+    message: 'What is your email address?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },  
+    {type: 'input',
+     name: 'title',
+     message: 'What is the project title?',
+     validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'input',
+    name: 'description',
+    message: 'Write a short description of the project.',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'list',
+    name: 'license',
+    message: 'What license is being used?',
+    choices:["MIT","Apache","So Forth..."],
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'input',
+    name: 'installation',
+    message: 'What command should be run to install dependencies?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'input',
+    name: 'tests',
+    message: 'What command should be run to run tests?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'input',
+    name: 'usage',
+    message: 'What does the user need to know about running the repo?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'input',
+    name: 'contributing',
+    message: 'What does the user need to know about contributing to the repo?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
+    },
+    {type: 'input',
+    name: 'questions',
+    message: 'What questions are there?',
+    validate: (value)=>{ if(value){return true} else {return "Input a value to continue."}}
     }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// GIVEN: function writeToFile(fileName, data) {}
+// GUESS: function writeToFile(generateMarkdown, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFileSync(fileName, data)
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then(response =>{
+        const markdown = generateMarkdown(response)
+        writeToFile("./output/README.md", markdown)
+
+    })
+}
 // function writeToFile(fileName, data (information from the template literal)) {}
 
 // Function call to initialize app
