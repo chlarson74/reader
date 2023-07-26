@@ -35,7 +35,7 @@ Functions through Terminal.
 - I learned about dependencies
 - I furthered my understanding of functions
 
-![Demonstration](/assets/reader-demo.mp4)
+https://github.com/chlarson74/reader/assets/137223285/edde1d8a-a4c3-41b9-b1e0-c993f7863c07
 
 ## Author Info
 
