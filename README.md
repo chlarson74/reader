@@ -1,4 +1,4 @@
-# DAILY PLANNER
+# READM Generator
 
 ## Technology Used 
 
