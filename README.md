@@ -1,4 +1,4 @@
-# READM Generator
+# README Generator
 
 ## Technology Used 
 
